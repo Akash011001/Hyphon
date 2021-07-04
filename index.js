@@ -7,6 +7,8 @@ var app = express()
 var server = http.createServer(app)
 var io = socketIO(server)
 
+var port = process.env.PORT || 3000;
+
 app.use(express.static('public'))
 
 app.get('/', (req, res)=>{
@@ -25,6 +27,6 @@ io.on('connection', (socket)=>{
     })
 })
 
-server.listen(80, ()=>{
-    console.log('server is running')
+server.listen(port, ()=>{
+    console.log('server is running at '+port)
 })
